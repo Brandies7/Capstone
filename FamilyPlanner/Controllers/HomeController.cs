@@ -7,6 +7,8 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace FamilyPlanner.Controllers
 {
@@ -40,7 +42,7 @@ namespace FamilyPlanner.Controllers
 
                 if (userId == null)
                 {
-                    string fileName = HttpContext.Server.MapPath(@"~/Images/noImg.png");
+                    string fileName = HttpContext.Server.MapPath(@"~/Images/");
 
                     byte[] imageData = null;
                     FileInfo fileInfo = new FileInfo(fileName);
