@@ -30,5 +30,8 @@ namespace FamilyPlanner.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<FamilyPlanner.Models.Calendar> Calendars { get; set; }
+        public DbSet<FamilyPlanner.Models.CalendarEvent> Schedular { get; set; }
     }
 }
