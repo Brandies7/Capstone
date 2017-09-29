@@ -33,16 +33,44 @@ namespace FamilyPlanner.Controllers
             return View();
         }
 
-
-        public FileContentResult UserPhotos()
+        public partial class EditorController : Controller
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                String userId = User.Identity.GetUserId();
 
-                if (userId == null)
+            public ActionResult Custom_Tools()
+            {
+                return View();
+            }
+
+
+            public FileContentResult UserPhotos()
+            {
+                if (User.Identity.IsAuthenticated)
                 {
-                    string fileName = HttpContext.Server.MapPath(@"~/Images/");
+                    String userId = User.Identity.GetUserId();
+
+                    if (userId == null)
+                    {
+                        string fileName = HttpContext.Server.MapPath(@"~/Images/yourphotohere.jpg");
+
+                        byte[] imageData = null;
+                        FileInfo fileInfo = new FileInfo(fileName);
+                        long imageFileLength = fileInfo.Length;
+                        FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+                        BinaryReader br = new BinaryReader(fs);
+                        imageData = br.ReadBytes((int)imageFileLength);
+
+                        return File(imageData, "image/png");
+
+                    }
+                    // to get the user details to load user Image 
+                    var bdUsers = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
+                    var userImage = bdUsers.Users.Where(x => x.Id == userId).FirstOrDefault();
+
+                    return new FileContentResult(userImage.UserPhoto, "image/jpeg");
+                }
+                else
+                {
+                    string fileName = HttpContext.Server.MapPath(@"~/Images/yourphotohere.jpg");
 
                     byte[] imageData = null;
                     FileInfo fileInfo = new FileInfo(fileName);
@@ -50,27 +78,8 @@ namespace FamilyPlanner.Controllers
                     FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
                     BinaryReader br = new BinaryReader(fs);
                     imageData = br.ReadBytes((int)imageFileLength);
-
                     return File(imageData, "image/png");
-
                 }
-                // to get the user details to load user Image 
-                var bdUsers = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
-                var userImage = bdUsers.Users.Where(x => x.Id == userId).FirstOrDefault();
-
-                return new FileContentResult(userImage.UserPhoto, "image/jpeg");
-            }
-            else
-            {
-                string fileName = HttpContext.Server.MapPath(@"~/Images/noImg.png");
-
-                byte[] imageData = null;
-                FileInfo fileInfo = new FileInfo(fileName);
-                long imageFileLength = fileInfo.Length;
-                FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
-                BinaryReader br = new BinaryReader(fs);
-                imageData = br.ReadBytes((int)imageFileLength);
-                return File(imageData, "image/png");
             }
         }
     }

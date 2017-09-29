@@ -21,17 +21,17 @@ namespace FamilyPlanner
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
 
-            if (!roleManager.RoleExists("Customer"))
+            if (!roleManager.RoleExists("Parent"))
             {
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-                role.Name = "Customer";
+                role.Name = "Parent";
                 roleManager.Create(role);
             }
 
-            if (!roleManager.RoleExists("Employee"))
+            if (!roleManager.RoleExists("Child"))
             {
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-                role.Name = "Employee";
+                role.Name = "Child";
                 roleManager.Create(role);
             }
         }
