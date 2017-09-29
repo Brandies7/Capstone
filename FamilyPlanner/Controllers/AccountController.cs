@@ -180,6 +180,8 @@ namespace FamilyPlanner.Controllers
                     await UserManager.AddToRoleAsync(user.Id, model.UserRoles);
                     return RedirectToAction("Index", "Home");
                 }
+
+                
                 AddErrors(result);
             }
             ViewBag.Name = new SelectList(context.Roles.Where(u => u.Name != "Admin").ToList(), "Name", "Name");
