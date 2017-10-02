@@ -1,4 +1,6 @@
-﻿@{
+﻿@model FamilyPlanner.Models.CalendarEvent
+
+@{
     ViewBag.Title = "Index";
 }
 
@@ -9,7 +11,7 @@
     <div id="model-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close"data-dissmiss="modal">&times;</button>
+                <button type="button" class="close" data-dissmiss="modal">&times;</button>
                 <h4 class="modal-title"><span id="eventTitle"></span></h4>
             </div>
             <div class="modal-body">
@@ -21,17 +23,17 @@
         </div>
     </div>
 </div>
-    
 
 
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.min.css" rel="stylesheet"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.print.css" rel="stylesheet" media="print"/>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.print.css" rel="stylesheet" media="print" />
 
 @section scripts{
     <script src="https://cdnjs.cloudfare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.1/fullcalendar.min.js"></script>
-    
+
     <script>
         $(document).ready(function(){
             var events = [];
@@ -87,9 +89,9 @@
                 })
             }
         })
-            
+
     </script>
-    
-    
+
+
 }
 

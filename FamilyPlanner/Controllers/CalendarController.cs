@@ -5,13 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 
 
-using DHTMLX.Scheduler;
-using DHTMLX.Common;
-using DHTMLX.Scheduler.Data;
-using DHTMLX.Scheduler.Controls;
 
 using FamilyPlanner.Models;
-//using Google.Apis.Calendar.v3.Data;
 
 namespace FamilyPlanner.Controllers
 {
@@ -19,9 +14,16 @@ namespace FamilyPlanner.Controllers
     {
         public ActionResult Index()
         {
-            var scheduler = new DHXScheduler(this);
-            scheduler.Skin = DHXScheduler.Skins.Flat;
-            return View(scheduler);
+            return View();
+        }
+
+        public JsonResult GetEvents()
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var events = db.Calendars.ToList();
+                return new JsonResult { Data = events, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
         }
     }
 }

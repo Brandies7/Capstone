@@ -36,6 +36,7 @@ namespace FamilyPlanner.Controllers
 
 
 
+
         public FileContentResult UserPhotos()
         {
             if (User.Identity.IsAuthenticated)
