@@ -19,15 +19,17 @@ namespace FamilyPlanner.Controllers
             sched.Skin = DHXScheduler.Skins.Terrace;
             sched.LoadData = true;
             sched.EnableDataprocessor = true;
-            sched.InitialDate = new DateTime(2016, 5, 5);
+            sched.InitialDate = new DateTime();
             return View(sched);
         }
 
         public ContentResult Data()
         {
             return (new SchedulerAjaxData(
-                new CalendarContext().Events
-                .Select(e => new { e.id, e.text, e.start_date, e.end_date })
+                new ApplicationDbContext().Events
+                
+                .Select(e => new { e.id, e.text, e.start_date, e.end_date, e.start_time, e.end_time })
+                
                 )
             );
         }
@@ -36,7 +38,7 @@ namespace FamilyPlanner.Controllers
         {
             var action = new DataAction(actionValues);
             var changedEvent = DHXEventsHelper.Bind<Events>(actionValues);
-            var entities = new CalendarContext();
+            var entities = new ApplicationDbContext();
             try
             {
                 switch (action.Type)
@@ -56,7 +58,7 @@ namespace FamilyPlanner.Controllers
                 entities.SaveChanges();
                 action.TargetId = changedEvent.id;
             }
-            catch (Exception e)
+            catch (Exception a)
             {
                 action.Type = DataActionTypes.Error;
             }
