@@ -1,6 +1,8 @@
 ﻿using DHTMLX.Common;
 using DHTMLX.Scheduler;
+using DHTMLX.Scheduler.Controls;
 using DHTMLX.Scheduler.Data;
+using DHTMLX.Scheduler.Settings;
 using FamilyPlanner.Models;
 using System;
 using System.Collections.Generic;
@@ -16,10 +18,18 @@ namespace FamilyPlanner.Controllers
         public ActionResult Index()
         {
             var sched = new DHXScheduler(this);
-            sched.Skin = DHXScheduler.Skins.Terrace;
+            sched.Skin = DHXScheduler.Skins.Glossy;
             sched.LoadData = true;
             sched.EnableDataprocessor = true;
             sched.InitialDate = new DateTime();
+            var map = new MapView
+            {
+                ApiKey = "AIzaSyClsFLXBrgtOmpD7C-gyY5tglRiVmlyhmk"
+            }; 
+
+            sched.Views.Add(map);
+
+
             return View(sched);
         }
 
@@ -29,6 +39,8 @@ namespace FamilyPlanner.Controllers
                 new ApplicationDbContext().Events
                 
                 .Select(e => new { e.id, e.text, e.start_date, e.end_date, e.start_time, e.end_time })
+                
+               
                 
                 )
             );
