@@ -28,8 +28,17 @@ namespace FamilyPlanner
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
+            bundles.Add(new StyleBundle("~/Content/fullcalendarcss").Include(
+                      "~/Content/themes/jquery.ui.all",
+                      "~/Content/fullcalendar.css"));
 
-           
+            bundles.Add(new StyleBundle("~/bundles/fullcalendarjs").Include(
+                      "~/Scripts/jquery-ui-{version}.min.js",
+                      "~/Scripts/moment.min.js",
+                      "~/Scripts/fullcalendar.min.js"));
+
+
+
         }
     }
 }
