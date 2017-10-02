@@ -31,6 +31,7 @@ namespace FamilyPlanner.Models
             return new ApplicationDbContext();
         }
 
+        public DbSet<Events> Events { get; set; }
         
     }
 }
