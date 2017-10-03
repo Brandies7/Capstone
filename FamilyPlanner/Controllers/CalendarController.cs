@@ -22,10 +22,14 @@ namespace FamilyPlanner.Controllers
             sched.LoadData = true;
             sched.EnableDataprocessor = true;
             sched.InitialDate = new DateTime();
+            sched.Config.map_resolve_event_location = true;
+            sched.Config.full_day = true;
+
             var map = new MapView
             {
                 ApiKey = "AIzaSyClsFLXBrgtOmpD7C-gyY5tglRiVmlyhmk"
             }; 
+          
 
             sched.Views.Add(map);
 
