@@ -34,7 +34,7 @@ namespace FamilyPlanner.Controllers
             sched.Lightbox.Add(check);
             sched.Lightbox.Add(new LightboxText("text", "Description") { Height = 30 });
             sched.Lightbox.Add(new LightboxText("location", "Location") { Height = 60 });
-           
+            
             
             sched.Config.cascade_event_display = true;
 
@@ -62,7 +62,7 @@ namespace FamilyPlanner.Controllers
             return (new SchedulerAjaxData(
                 new ApplicationDbContext().Events
                 
-                .Select(e => new { e.id, e.text, e.start_date, e.end_date, e.start_time, e.end_time, e.location })
+                .Select(e => new { e.id, e.text, e.start_date, e.end_date, e.start_time, e.end_time, e.location, e.lat, e.lng })
                 
                 
                
@@ -96,6 +96,7 @@ namespace FamilyPlanner.Controllers
                 }
                 entities.SaveChanges();
                 action.TargetId = changedEvent.id;
+                
             }
             catch (Exception a)
             {
