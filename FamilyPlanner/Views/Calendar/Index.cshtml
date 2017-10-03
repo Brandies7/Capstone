@@ -7,27 +7,34 @@
 <html>
 <head>
     <title>Calendar</title>
+    <script src="codebase/dhtmlx.js" type="text/javascript"></script>
 
-    <style>
+    <link rel="STYLESHEET" type="text/css" href="codebase/dhtmlx.css">
+
+    @*<style>
         body {
             background-color: #eee;
         }
-    </style>
+        
+    </style>*@
+    
 </head>
 <body>
-    <div style="height:700px;width:900px;margin:0 auto">
+    <script type="text/javascript"></script>
+    <div style="height:700px;width:900px;margin:0 auto;background-color:#eee; color:black">
         @Html.Raw(Model.Render())
     </div>
    
+   
 
-    <div id="scheduler_here" class="dhx_cal_container" ...>
+    <div id="scheduler_here" class="dhx_cal_container" scheduler.locale.labels.map_tab = "Map">
         <div class="dhx_cal_navline">
-            ...
+
             <div class="dhx_cal_tab" name="map_tab" style="right:280px;"></div>
         </div>
-        
-        ...
     </div>
+
+    
 </body>
 
 </html>

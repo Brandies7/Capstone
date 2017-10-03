@@ -309,6 +309,10 @@
     <Compile Include="Migrations\201710021851065_Events.Designer.cs">
       <DependentUpon>201710021851065_Events.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710031402087_altered events table.cs" />
+    <Compile Include="Migrations\201710031402087_altered events table.Designer.cs">
+      <DependentUpon>201710031402087_altered events table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Events.cs" />
@@ -319,6 +323,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\custombootstrap.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -784,6 +789,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710021851065_Events.resx">
       <DependentUpon>201710021851065_Events.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710031402087_altered events table.resx">
+      <DependentUpon>201710031402087_altered events table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

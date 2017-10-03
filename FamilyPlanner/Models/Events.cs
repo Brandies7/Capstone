@@ -26,5 +26,14 @@ namespace FamilyPlanner.Models
 
         [Display(Name = "EndTime")]
         public string end_time { get; set; }
+
+        [Display(Name = "Location")]
+        public string location { get; set; }
+
+        [Display(Name = "Latitude")]
+        public float lat { get; set; }
+
+        [Display(Name = "Longitude")]
+        public float lng { get; set; }
     }
 }

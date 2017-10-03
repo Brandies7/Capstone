@@ -23,3 +23,12 @@ textarea {
     max-width: 280px;
 }
 
+.dhx_btn_set.location_set
+{
+   border: 1px solid black;
+}
+.dhx_btn_set.location_set .location
+{
+   display:none;
+}
+
