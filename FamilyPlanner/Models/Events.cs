@@ -35,5 +35,6 @@ namespace FamilyPlanner.Models
 
         [Display(Name = "Longitude")]
         public float lng { get; set; }
+        
     }
 }

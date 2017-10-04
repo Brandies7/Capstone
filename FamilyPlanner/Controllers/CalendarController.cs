@@ -2,14 +2,12 @@
 using DHTMLX.Scheduler;
 using DHTMLX.Scheduler.Controls;
 using DHTMLX.Scheduler.Data;
-using DHTMLX.Helpers;
-using DHTMLX.Scheduler.Settings;
 using FamilyPlanner.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 
 
@@ -18,8 +16,10 @@ namespace FamilyPlanner.Controllers
     public class CalendarController : Controller
     {
         // GET: Calendar
+
         public ActionResult Index()
         {
+            ApplicationDbContext db = new ApplicationDbContext();
             var sched = new DHXScheduler(this);
             sched.Skin = DHXScheduler.Skins.Flat;
             sched.LoadData = true;
@@ -33,29 +33,70 @@ namespace FamilyPlanner.Controllers
             check.CheckedValue = "red";
             sched.Lightbox.Add(check);
             sched.Lightbox.Add(new LightboxText("text", "Description") { Height = 30 });
-            sched.Lightbox.Add(new LightboxText("location", "Location") { Height = 60 });
+
+            //sched.Lightbox.Add(new LightboxText("location", "Location") { Height = 60 });
             
-            
+
+
+           
+
+
+
+
+
+
+
+
+
             sched.Config.cascade_event_display = true;
+         
 
 
 
 
-
-
+           
+            //var map = new MapView
+            //{
+            //    ApiKey = "AIzaSyClsFLXBrgtOmpD7C-gyY5tglRiVmlyhmk"
+            //};
+         
             var map = new MapView
             {
                 ApiKey = "AIzaSyClsFLXBrgtOmpD7C-gyY5tglRiVmlyhmk"
             };
+
+           
+            
             sched.Views.Add(map);
             
-
+            sched.LoadData = true;
+            map.SectionLocation = "Location";
+            
+            sched.DataAction = "Data";
             return View(sched);
         }
+        
 
 
 
-       
+            
+        
+        //public ContentResult MapEvents()
+        //{
+        //    var today = DateTime.Today;
+            
+        //    var data = new SchedulerAjaxData(new List<Events>() {
+               
+        //         id=2, text="", start_date, end_date=, lat=48.7396839, lng=7.813368099999934, event_location="D37, 67240 Kurtzenhouse, France",
+                
+
+
+        //    return data;
+        //}
+
+
+
+
 
         public ContentResult Data()
         {
@@ -64,7 +105,7 @@ namespace FamilyPlanner.Controllers
                 
                 .Select(e => new { e.id, e.text, e.start_date, e.end_date, e.start_time, e.end_time, e.location, e.lat, e.lng })
                 
-                
+               
                
                 
                 )
