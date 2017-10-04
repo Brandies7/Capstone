@@ -21,12 +21,6 @@ namespace FamilyPlanner.Models
         [Display(Name = "EndDate")]
         public string end_date { get; set; }
 
-        [Display(Name = "StartTime")]
-        public string start_time { get; set; }
-
-        [Display(Name = "EndTime")]
-        public string end_time { get; set; }
-
         [Display(Name = "Location")]
         public string location { get; set; }
 
@@ -35,6 +29,14 @@ namespace FamilyPlanner.Models
 
         [Display(Name = "Longitude")]
         public float lng { get; set; }
+
+        [Display(Name = "EventLocation")]
+        public string event_location { get; set; }
+
+        [Display(Name = "TextColor")]
+        public string textColor { get; set; }
+
+        
         
     }
 }
