@@ -16,10 +16,11 @@
     <link href="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.2/leaflet.css" media="screen" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.2/leaflet.js"></script>
     <script type="text/javascript" src="//cdn.aerisjs.com/aeris-interactive/aim-leaflet.js"></script>
+    <script type="text/javascript" src="~/Scripts/cdn.aerisjs.com/aeris-leaflet-plus.min.js"></script>
     <script type="text/javascript">
     var aerisMapBuilder = new aeris.interactive.MapAppBuilder({
-        apiId: 'sfYvH0GOxPDdoXfaP7gmj ',
-        apiSecret: 'enuhFD0vAefKJBAYLuuo8vJgB4xcyAp2ZnzyQl35 ',
+        apiId: 'sfYvH0GOxPDdoXfaP7gmj',
+        apiSecret: 'enuhFD0vAefKJBAYLuuo8vJgB4xcyAp2ZnzyQl35',
         el: '#map-canvas',
       modules: {
         map: {
@@ -31,7 +32,7 @@
           geolocate: true
         },
         localWeather: {
-          showOnInit: true
+          showOnInit: false
         },
         mapControls: {
           expandOnInit: false
