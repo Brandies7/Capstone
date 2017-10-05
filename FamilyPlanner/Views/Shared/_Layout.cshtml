@@ -51,6 +51,8 @@
             </div>
         </div>
     </div>
+    
+    
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -62,6 +64,14 @@
     @Scripts.Render("~/bundles/jquery")
    
     @Scripts.Render("~/bundles/bootstrap")
+    <script type="text/javascript" src="~/Scripts/pwstrength-bootstrap.js"></script>
+    <script>
+        $('#pass').pwstrength({
+        ui: { showVerdictsInsideProgressBar: true }
+        });
+    </script>
+
     @RenderSection("Scripts", false)
+    
 </body>
 </html>

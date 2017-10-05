@@ -3,17 +3,31 @@
     ViewBag.Title = "Home Page";
 }
 
-@*<div class="jumbotron">
-    @*<h1>
-        Profile Image ..
 
-        <img src="@Url.Action("UserPhotos", "Home" )" style="width:160px;height:160px; background: #FFFFFF;
-    margin: auto;
-    -moz-border-radius: 60px;
-    border-radius: 100px;
-    padding: 6px;
-    box-shadow: 0px 0px 20px #888;" />
-    </h1>*@ 
+        <script type="text/javascript" src="//cdn.aerisjs.com/aeris-gmaps-plus.min.js"></script>
+    <script type="text/javascript">
+        var map = new aeris.maps.Map('map-canvas', {
+            center: [45, -90],
+            zoom: 12
+        });
+        var radarLayer = new aeris.maps.layers.Radar();
+
+        radarLayer.setMap(map);
+        aeris.config.setApiId('sfYvH0GOxPDdoXfaP7gmj');
+        aeris.config.setApiSecret('enuhFD0vAefKJBAYLuuo8vJgB4xcyAp2ZnzyQl35');
+    </script>
+
+        @*<div class="jumbotron">*@
+        @*<h1>
+            Profile Image ..
+
+            <img src="@Url.Action("UserPhotos", "Home" )" style="width:160px;height:160px; background: #FFFFFF;
+        margin: auto;
+        -moz-border-radius: 60px;
+        border-radius: 100px;
+        padding: 6px;
+        box-shadow: 0px 0px 20px #888;" />
+        </h1> 
     @*<h1>ASP.NET</h1>
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
     <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
