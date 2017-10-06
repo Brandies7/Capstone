@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.ComponentModel.DataAnnotations;
+using Google.Apis;
 
 
 
@@ -27,78 +28,25 @@ namespace FamilyPlanner.Controllers
             sched.InitialDate = new DateTime();
             sched.Config.map_resolve_event_location = true;
             sched.Config.map_resolve_user_location = true;
-            
             sched.Config.full_day = true;
             var check = new LightboxCheckbox("highlighting", "Important");
             check.MapTo = "textColor";
             check.CheckedValue = "red";
             sched.Lightbox.Add(check);
             sched.Lightbox.Add(new LightboxText("text", "Description"));
-            
-
             sched.Lightbox.Add(new LightboxText("event_location", "Location") { Height = 60 });
-            
-
-
-           
-
-
-
-
-
-
-
-
-
             sched.Config.cascade_event_display = true;
-         
 
-
-
-
-           
-            
-         
             var map = new MapView
             {
                 ApiKey = "AIzaSyClsFLXBrgtOmpD7C-gyY5tglRiVmlyhmk"
             };
-
-           
-            
             sched.Views.Add(map);
-            
-
             sched.LoadData = true;
-            
             map.SectionLocation = "Location";
-            
             sched.DataAction = "Data";
             return View(sched);
         }
-
-
-
-
-
-
-        //public ContentResult MapEvents()
-        //{
-        //    var today = DateTime.Today;
-
-        //    var data = new SchedulerAjaxData(new List<object>() {
-        //        new {id=2, text="Kurtzenhouse", start_date=today.AddDays(1).AddHours(13), end_date=today.AddDays(1).AddHours(16), },
-        //        new {id=3, text="Forêt Domaniale", start_date=today.AddDays(2).AddHours(10), end_date=today.AddDays(2).AddHours(12), lat=48.767333, lng=5.793258000000037, event_location="Forêt Domaniale de la Reine, Véry, 54200 Royaumeix, France"},
-        //        new {id=4, text="Windstein", start_date=today.AddDays(3).AddHours(7), end_date=today.AddDays(3).AddHours(8), lat=49.0003477, lng=7.687306499999977, event_location="1 Rue du Nagelsthal, 67110 Windstein, France"}
-        //        });
-
-
-        //    return data;
-        //}
-
-
-
-
 
         public ContentResult Data(MapView map)
         {
