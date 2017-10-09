@@ -7,8 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using System.ComponentModel.DataAnnotations;
-using Google.Apis;
+
 
 
 
@@ -36,6 +35,10 @@ namespace FamilyPlanner.Controllers
             sched.Lightbox.Add(new LightboxText("text", "Description"));
             sched.Lightbox.Add(new LightboxText("event_location", "Location") { Height = 60 });
             sched.Config.cascade_event_display = true;
+            if (this.User.IsInRole("Child"))
+            {
+                sched.Config.isReadonly = true;
+            }
 
             var map = new MapView
             {
@@ -45,6 +48,7 @@ namespace FamilyPlanner.Controllers
             sched.LoadData = true;
             map.SectionLocation = "Location";
             sched.DataAction = "Data";
+
             return View(sched);
         }
 
