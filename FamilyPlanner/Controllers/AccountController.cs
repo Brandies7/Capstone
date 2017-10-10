@@ -184,11 +184,11 @@ namespace FamilyPlanner.Controllers
 
                 if (model.UserRoles == "Parent")
                 {
-                    return RedirectToAction("Index", "Parents");
+                    return RedirectToAction("Create", "Parents");
                 }
                 else if (model.UserRoles == "Child")
                 {
-                    return RedirectToAction("Index", "Children");
+                    return RedirectToAction("Create", "Children");
                 }
                 else
                 {

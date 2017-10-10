@@ -60,8 +60,9 @@ namespace FamilyPlanner.Controllers
                 // to get the user details to load user Image 
                 var bdUsers = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
                 var userImage = bdUsers.Users.Where(x => x.Id == userId).FirstOrDefault();
-
+                
                 return new FileContentResult(userImage.UserPhoto, "image/jpeg");
+                
             }
             else
             {
@@ -73,7 +74,10 @@ namespace FamilyPlanner.Controllers
                 FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
                 BinaryReader br = new BinaryReader(fs);
                 imageData = br.ReadBytes((int)imageFileLength);
+                
                 return File(imageData, "image/png");
+           
+                
             }
         }
     }
