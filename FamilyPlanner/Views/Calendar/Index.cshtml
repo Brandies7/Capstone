@@ -1,5 +1,16 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (User.IsInRole("Parent"))
+    {
+        Layout = "~/Views/Shared/_ParentLayout.cshtml";
+    }
+    else if (User.IsInRole("Child"))
+    {
+        Layout = ("~/Views/Shared/_ChildLayout.cshtml");
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 }
 
 

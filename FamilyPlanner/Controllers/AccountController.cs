@@ -165,7 +165,7 @@ namespace FamilyPlanner.Controllers
                         imageData = binary.ReadBytes(poImgFile.ContentLength);
                     }
                 }
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 user.UserPhoto = imageData;
                 if (result.Succeeded)
@@ -178,11 +178,22 @@ namespace FamilyPlanner.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
                     await UserManager.AddToRoleAsync(user.Id, model.UserRoles);
-                    return RedirectToAction("Index", "Home");
+                    //return RedirectToAction("Index", "Home");
+                    AddErrors(result);
                 }
 
-                
-                AddErrors(result);
+                if (model.UserRoles == "Parent")
+                {
+                    return RedirectToAction("Index", "Parents");
+                }
+                else if (model.UserRoles == "Child")
+                {
+                    return RedirectToAction("Index", "Children");
+                }
+                else
+                {
+                    return View();
+                }              
             }
             ViewBag.Name = new SelectList(context.Roles.Where(u => u.Name != "Admin").ToList(), "Name", "Name");
 
