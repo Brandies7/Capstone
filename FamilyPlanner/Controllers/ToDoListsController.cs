@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FamilyPlanner.Models;
+using Microsoft.AspNet.Identity;
 
 namespace FamilyPlanner.Controllers
 {
@@ -50,6 +51,11 @@ namespace FamilyPlanner.Controllers
         {
             if (ModelState.IsValid)
             {
+                string currentUserId = User.Identity.GetUserId();
+                ApplicationUser currentUser = db.Users.FirstOrDefault
+                    (x => x.Id == currentUserId);
+                toDoList.User = currentUser;
+                    
                 db.ToDo.Add(toDoList);
                 db.SaveChanges();
                 return RedirectToAction("Index");
