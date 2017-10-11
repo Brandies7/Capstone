@@ -1,0 +1,40 @@
+﻿@model FamilyPlanner.Models.Chores
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Kids Chores</h2>
+
+<div id="tableDiv"></div>
+<div id="todoCreateForm">
+    @using (Ajax.BeginForm("AJAXCreate", "Chores", new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        HttpMethod = "POST",
+        UpdateTargetId = "tableDiv"
+
+    }))
+    {
+        <div class="form-group">
+            @Html.AntiForgeryToken()
+
+            <div>
+                @Html.EditorFor(model => model.Chore, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Chore, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div>
+                <input type="submit" class="btn btn-default" value="Add" />
+            </div>
+        </div>
+
+    }
+</div>
+@section Scripts {
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/CustomScripts/BuildChoresTable.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+
+}
