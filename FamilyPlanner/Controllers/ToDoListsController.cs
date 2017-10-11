@@ -18,7 +18,22 @@ namespace FamilyPlanner.Controllers
         // GET: ToDoLists
         public ActionResult Index()
         {
-            return View(db.ToDo.ToList());
+            
+            return View();
+        }
+
+        private IEnumerable<ToDoList> GetMyToDoes()
+        {
+            string currentUserId = User.Identity.GetUserId();
+            ApplicationUser currentUser = db.Users.FirstOrDefault
+                (x => x.Id == currentUserId);
+            return  db.ToDo.ToList().Where(x => x.User == currentUser);
+        }
+
+        public ActionResult BuildToDoTable()
+        {
+
+            return PartialView("_ToDoTable", GetMyToDoes());
         }
 
         // GET: ToDoLists/Details/5
