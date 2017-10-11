@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using FamilyPlanner.Models;
 using Microsoft.AspNet.Identity;
+using System.Collections;
 
 namespace FamilyPlanner.Controllers
 {
@@ -26,7 +27,20 @@ namespace FamilyPlanner.Controllers
             string currentUserId = User.Identity.GetUserId();
             ApplicationUser currentUser = db.Users.FirstOrDefault
                 (x => x.Id == currentUserId);
-            return db.ToDo.ToList().Where(x => x.User == currentUser);
+
+            IEnumerable<ToDoList> myToDoes = db.ToDo.ToList().Where(x => x.User == currentUser);
+
+            int completeCount = 0;
+            foreach (ToDoList toDo in myToDoes)
+            {
+                if (toDo.Completed)
+                {
+                    completeCount++;
+                }
+            }
+            ViewBag.Percent = Math.Round(100f * ((float)completeCount / (float) myToDoes.Count()));
+            return myToDoes;
+            //return db.ToDo.ToList().Where(x => x.User == currentUser);
         }
         public ActionResult BuildToDoTable()
         {
