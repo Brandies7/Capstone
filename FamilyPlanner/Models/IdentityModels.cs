@@ -36,6 +36,7 @@ namespace FamilyPlanner.Models
         public DbSet<Child> Child { get; set; }
         public DbSet<ToDoList> ToDo { get; set; }
         public DbSet<ShoppingList> ShoppingList { get; set; }
+        public DbSet<Chores> Chores { get; set; }
 
     }
 }
