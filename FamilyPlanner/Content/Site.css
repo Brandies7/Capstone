@@ -32,3 +32,11 @@ textarea {
    display:none;
 }
 
+.CompletedToDo{
+    text-decoration:line-through;
+    text-decoration-color:black;
+}
+
+tr:nth-child(even) {background: #4e5d6c}
+tr:nth-child(odd) {background: }
+

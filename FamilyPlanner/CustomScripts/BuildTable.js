@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     $.ajax({
-        url: '/ToDoList/BuildToDoTable',
+        url: '/ToDoLists/BuildToDoTable',
         success: function (result) {
             $('#tableDiv').html(result);
         }

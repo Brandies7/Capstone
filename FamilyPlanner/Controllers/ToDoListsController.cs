@@ -18,7 +18,6 @@ namespace FamilyPlanner.Controllers
         // GET: ToDoLists
         public ActionResult Index()
         {
-            
             return View();
         }
 
@@ -27,13 +26,12 @@ namespace FamilyPlanner.Controllers
             string currentUserId = User.Identity.GetUserId();
             ApplicationUser currentUser = db.Users.FirstOrDefault
                 (x => x.Id == currentUserId);
-            return  db.ToDo.ToList().Where(x => x.User == currentUser);
+            return db.ToDo.ToList().Where(x => x.User == currentUser);
         }
-
         public ActionResult BuildToDoTable()
         {
-
-            return PartialView("_ToDoTable", GetMyToDoes());
+            
+            return View("_ToDoTable", GetMyToDoes());
         }
 
         // GET: ToDoLists/Details/5
@@ -79,6 +77,25 @@ namespace FamilyPlanner.Controllers
             return View(toDoList);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AJAXCreate([Bind(Include = "Id,MyToDoList")] ToDoList toDoList)
+        {
+            if (ModelState.IsValid)
+            {
+                string currentUserId = User.Identity.GetUserId();
+                ApplicationUser currentUser = db.Users.FirstOrDefault
+                    (x => x.Id == currentUserId);
+                toDoList.User = currentUser;
+                toDoList.Completed = false;
+                db.ToDo.Add(toDoList);
+                db.SaveChanges();
+
+            }
+
+            return PartialView("_ToDoTable", GetMyToDoes());
+        }
+
         // GET: ToDoLists/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -90,6 +107,15 @@ namespace FamilyPlanner.Controllers
             if (toDoList == null)
             {
                 return HttpNotFound();
+            }
+
+            string currentUserId = User.Identity.GetUserId();
+            ApplicationUser currentUser = db.Users.FirstOrDefault
+                (x => x.Id == currentUserId);
+
+            if (toDoList.User != currentUser)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             return View(toDoList);
         }
@@ -108,6 +134,29 @@ namespace FamilyPlanner.Controllers
                 return RedirectToAction("Index");
             }
             return View(toDoList);
+        }
+
+        [HttpPost]
+ 
+        public ActionResult AJAXEdit(int? id, bool value)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ToDoList toDoList = db.ToDo.Find(id);
+            if (toDoList == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                toDoList.Completed = value;
+                db.Entry(toDoList).State = EntityState.Modified;
+                db.SaveChanges();
+                return PartialView("_ToDoTable", GetMyToDoes());
+            }
+            
         }
 
         // GET: ToDoLists/Delete/5
