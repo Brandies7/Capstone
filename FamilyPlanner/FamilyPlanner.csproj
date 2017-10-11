@@ -284,6 +284,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ParentsController.cs" />
+    <Compile Include="Controllers\ToDoListsController.cs" />
     <Compile Include="Controllers\WeatherController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -324,6 +325,10 @@
     <Compile Include="Migrations\201710091903390_added child and parent tables.Designer.cs">
       <DependentUpon>201710091903390_added child and parent tables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710110253138_added to do list.cs" />
+    <Compile Include="Migrations\201710110253138_added to do list.Designer.cs">
+      <DependentUpon>201710110253138_added to do list.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Child.cs" />
@@ -332,6 +337,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\CalendarContext.cs" />
     <Compile Include="Models\Parent.cs" />
+    <Compile Include="Models\ToDoList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -792,6 +798,11 @@
     <Content Include="Views\Parents\Details.cshtml" />
     <Content Include="Views\Parents\Edit.cshtml" />
     <Content Include="Views\Parents\Index.cshtml" />
+    <Content Include="Views\ToDoLists\Create.cshtml" />
+    <Content Include="Views\ToDoLists\Delete.cshtml" />
+    <Content Include="Views\ToDoLists\Details.cshtml" />
+    <Content Include="Views\ToDoLists\Edit.cshtml" />
+    <Content Include="Views\ToDoLists\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -827,6 +838,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710091903390_added child and parent tables.resx">
       <DependentUpon>201710091903390_added child and parent tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710110253138_added to do list.resx">
+      <DependentUpon>201710110253138_added to do list.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

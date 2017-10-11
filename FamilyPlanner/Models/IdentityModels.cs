@@ -34,6 +34,8 @@ namespace FamilyPlanner.Models
         public DbSet<Events> Events { get; set; }
         public DbSet<Parent> Parent { get; set; }
         public DbSet<Child> Child { get; set; }
+
+        public DbSet<ToDoList> ToDo { get; set; }
         
     }
 }
