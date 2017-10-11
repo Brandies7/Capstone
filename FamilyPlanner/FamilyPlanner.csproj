@@ -329,6 +329,10 @@
     <Compile Include="Migrations\201710110253138_added to do list.Designer.cs">
       <DependentUpon>201710110253138_added to do list.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710111207073_added shopping list.cs" />
+    <Compile Include="Migrations\201710111207073_added shopping list.Designer.cs">
+      <DependentUpon>201710111207073_added shopping list.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Child.cs" />
@@ -337,6 +341,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\CalendarContext.cs" />
     <Compile Include="Models\Parent.cs" />
+    <Compile Include="Models\ShoppingList.cs" />
     <Compile Include="Models\ToDoList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -844,6 +849,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710110253138_added to do list.resx">
       <DependentUpon>201710110253138_added to do list.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710111207073_added shopping list.resx">
+      <DependentUpon>201710111207073_added shopping list.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
