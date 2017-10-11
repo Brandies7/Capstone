@@ -1,4 +1,5 @@
-﻿@model FamilyPlanner.Models.ToDoList
+﻿
+@model FamilyPlanner.Models.ToDoList
 
 @{
     ViewBag.Title = "Index";
@@ -8,6 +9,7 @@
 
 
 <div id="tableDiv"></div>
+
 <div id="todoCreateForm">
     @using (Ajax.BeginForm("AJAXCreate", "ToDoLists", new AjaxOptions
     {
