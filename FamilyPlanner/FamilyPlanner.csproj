@@ -293,6 +293,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ParentsController.cs" />
+    <Compile Include="Controllers\SendEmailsController.cs" />
     <Compile Include="Controllers\ShoppingListsController.cs" />
     <Compile Include="Controllers\ToDoListsController.cs" />
     <Compile Include="Controllers\WeatherController.cs" />
@@ -346,6 +347,10 @@
     <Compile Include="Migrations\201710111313217_added chores model.cs" />
     <Compile Include="Migrations\201710111313217_added chores model.Designer.cs">
       <DependentUpon>201710111313217_added chores model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710121631056_added sendemail.cs" />
+    <Compile Include="Migrations\201710121631056_added sendemail.Designer.cs">
+      <DependentUpon>201710121631056_added sendemail.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -843,10 +848,14 @@
     <Content Include="Views\Chores\Edit.cshtml" />
     <Content Include="Views\Chores\Index.cshtml" />
     <Content Include="Views\Chores\_ChoresTable.cshtml" />
+    <Content Include="Views\SendEmails\Create.cshtml" />
+    <Content Include="Views\SendEmails\Delete.cshtml" />
+    <Content Include="Views\SendEmails\Details.cshtml" />
+    <Content Include="Views\SendEmails\Edit.cshtml" />
+    <Content Include="Views\SendEmails\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\SendEmail\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -888,6 +897,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710111313217_added chores model.resx">
       <DependentUpon>201710111313217_added chores model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710121631056_added sendemail.resx">
+      <DependentUpon>201710121631056_added sendemail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
