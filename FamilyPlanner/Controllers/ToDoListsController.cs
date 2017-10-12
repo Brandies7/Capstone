@@ -37,6 +37,7 @@ namespace FamilyPlanner.Controllers
                 {
                     completeCount++;
                 }
+               
             }
             ViewBag.Percent = Math.Round(100f * ((float)completeCount / (float) myToDoes.Count()));
             return myToDoes;
