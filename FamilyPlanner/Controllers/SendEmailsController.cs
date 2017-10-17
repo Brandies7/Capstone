@@ -12,6 +12,7 @@ using RestSharp.Authenticators;
 using System.Threading.Tasks;
 using System.Net.Mail;
 using Postal;
+using System.Web.Helpers;
 
 namespace FamilyPlanner.Controllers
 {
@@ -23,66 +24,56 @@ namespace FamilyPlanner.Controllers
         public ActionResult Index(FamilyPlanner.Models.SendEmail model)
         {
 
-            dynamic email = new Postal.Email("SendEmails");
-            email.To = model.To;
-            email.From = model.From;
-            email.Text = model.Text;
-
-            //email.FunnyLink = DB.GetRandomLolcatLink();
-            email.Send();
-            //return View();
+            
 
             return View(db.SendEmail.ToList());
         }
 
 
+        public ActionResult SendEmail()
+        {
 
-        //public static IRestResponse SendSimpleMessage(FamilyPlanner.Models.SendEmail model)
-        //{
-        //    RestClient client = new RestClient();
-        //    client.BaseUrl = new Uri("https://api.mailgun.net/v3");
-        //    client.Authenticator =
-        //        new HttpBasicAuthenticator("api",
-        //                                    "key-3e36e3044866ef2dafbb2aa51e996fb9");
-        //    RestRequest request = new RestRequest();
-        //    request.AddParameter("domain", "sandbox7b6a18890e5145a69f4c05300155c892.mailgun.org", ParameterType.UrlSegment);
-        //    request.Resource = "{domain}/messages";
-        //    request.AddParameter("from", model.From);
-        //    request.AddParameter("to", model.To);
-        //    //request.AddParameter("to", "YOU@YOUR_DOMAIN_NAME");
-        //    //request.AddParameter("subject", model.Text);
-        //    request.AddParameter("text", model.Text);
-        //    request.Method = Method.POST;
-        //    return client.Execute(request);
-        //}
+            return View();
+        }
 
-        //public ActionResult Index()
-        //{
-        //    return View(db.SendEmail.ToList());
-        //}
+        [HttpPost]
+        public ActionResult SendEmail(FamilyPlanner.Models.SendEmail model)
+        {
+            
+            try
+            {
+                //Configuring webMail class to send emails  
+                //gmail smtp server  
+                WebMail.SmtpServer = "smtp.gmail.com";
+                //gmail port to send emails  
+                WebMail.SmtpPort = 587;
+                WebMail.SmtpUseDefaultCredentials = true;
+                //sending emails with secure protocol  
+                WebMail.EnableSsl = true;
+                //EmailId used to send emails from application  
+                WebMail.UserName = "adanb82@gmail.com";
+                WebMail.Password = "Crazyseven7";
 
-        //[HttpPost]
-        //public ActionResult Index(FamilyPlanner.Models.SendEmail model)
-        //{
-        //    ApplicationUser user = new ApplicationUser();
-        //    MailMessage mm = new MailMessage(user.Email, model.To);
-        //    mm.Body = model.Text;
-        //    mm.IsBodyHtml = false;
+                //Sender email address.  
+                WebMail.From = model.From;
 
-        //    SmtpClient smtp = new SmtpClient();
-        //    smtp.Host = "smtp.gmail.com";
-        //    smtp.Port = 587;
-        //    smtp.EnableSsl = true;
+                //Send email  
+                WebMail.Send(to: model.To, subject: model.Text, body: model.Text, from: model.From, cc: model.Text, isBodyHtml: true);
+                ViewBag.Status = "Email Sent Successfully.";
+            }
+            catch (Exception)
+            {
+                ViewBag.Status = "Problem while sending email, Please check details.";
 
-        //    NetworkCredential nc = new NetworkCredential(user.Email, user.PasswordHash);
-        //    smtp.UseDefaultCredentials = true;
-        //    smtp.Credentials = nc;
-        //    smtp.Send(mm);
-        //    ViewBag.Message = "Mail has been sent!";
-        //    return View();
-        //}
-        // GET: SendEmails/Details/5
-        public ActionResult Details(int? id)
+            }
+            return View();
+        }
+    
+
+
+
+// GET: SendEmails/Details/5
+public ActionResult Details(int? id)
         {
             if (id == null)
             {
