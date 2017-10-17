@@ -177,6 +177,14 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Postal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=45719375b8b4d528, processorArchitecture=MSIL">
+      <HintPath>..\packages\Postal.Mvc5.1.2.0\lib\net45\Postal.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RazorEngine, Version=3.4.1.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.4.1\lib\net45\RazorEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.105.2.3\lib\net452\RestSharp.dll</HintPath>
       <Private>True</Private>
@@ -351,6 +359,14 @@
     <Compile Include="Migrations\201710121631056_added sendemail.cs" />
     <Compile Include="Migrations\201710121631056_added sendemail.Designer.cs">
       <DependentUpon>201710121631056_added sendemail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710171835144_added password to email table.cs" />
+    <Compile Include="Migrations\201710171835144_added password to email table.Designer.cs">
+      <DependentUpon>201710171835144_added password to email table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710171908212_removed password from email table.cs" />
+    <Compile Include="Migrations\201710171908212_removed password from email table.Designer.cs">
+      <DependentUpon>201710171908212_removed password from email table.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -853,6 +869,8 @@
     <Content Include="Views\SendEmails\Details.cshtml" />
     <Content Include="Views\SendEmails\Edit.cshtml" />
     <Content Include="Views\SendEmails\Index.cshtml" />
+    <Content Include="Views\Emails\_ViewStart.cshtml" />
+    <Content Include="Views\Emails\Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -900,6 +918,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710121631056_added sendemail.resx">
       <DependentUpon>201710121631056_added sendemail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710171835144_added password to email table.resx">
+      <DependentUpon>201710171835144_added password to email table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710171908212_removed password from email table.resx">
+      <DependentUpon>201710171908212_removed password from email table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
