@@ -23,6 +23,7 @@
             @Html.AntiForgeryToken() 
             
             <div>
+                @Html.Label("To Do")@*, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.EditorFor(model => model.MyToDoList, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.MyToDoList, "", new { @class = "text-danger" })
             </div>

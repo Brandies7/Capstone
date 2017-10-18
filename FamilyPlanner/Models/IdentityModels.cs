@@ -38,6 +38,8 @@ namespace FamilyPlanner.Models
         public DbSet<ShoppingList> ShoppingList { get; set; }
         public DbSet<Chores> Chores { get; set; }
         public DbSet<SendEmail> SendEmail { get; set; }
+        public DbSet<Message> Messages { get; set; }
+        public DbSet<Inbox> Inbox { get; set; }
 
     }
 }

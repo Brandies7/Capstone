@@ -16,6 +16,7 @@ namespace FamilyPlanner.Controllers
     {
         public ActionResult Index()
         {
+           
             return View();
         }
 

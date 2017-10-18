@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FamilyPlanner.Models.SendEmail>
+﻿@model IEnumerable<FamilyPlanner.Message>
 
 @{
     ViewBag.Title = "Index";
@@ -12,10 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.From)
+            @Html.DisplayNameFor(model => model.Sender)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.To)
+            @Html.DisplayNameFor(model => model.Receiver)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Text)
@@ -26,10 +26,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.From)
+            @Html.DisplayFor(modelItem => item.Sender)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.To)
+            @Html.DisplayFor(modelItem => item.Receiver)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Text)

@@ -299,7 +299,9 @@
     <Compile Include="Controllers\ChildrenController.cs" />
     <Compile Include="Controllers\ChoresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InboxesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\ParentsController.cs" />
     <Compile Include="Controllers\SendEmailsController.cs" />
     <Compile Include="Controllers\ShoppingListsController.cs" />
@@ -308,6 +310,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Inbox.cs" />
+    <Compile Include="Message.cs" />
     <Compile Include="Migrations\201709281233088_first migration.cs" />
     <Compile Include="Migrations\201709281233088_first migration.Designer.cs">
       <DependentUpon>201709281233088_first migration.cs</DependentUpon>
@@ -371,6 +375,14 @@
     <Compile Include="Migrations\201710172250254_added password field to email table.cs" />
     <Compile Include="Migrations\201710172250254_added password field to email table.Designer.cs">
       <DependentUpon>201710172250254_added password field to email table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710180141151_messages.cs" />
+    <Compile Include="Migrations\201710180141151_messages.Designer.cs">
+      <DependentUpon>201710180141151_messages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710180458387_Inbox.cs" />
+    <Compile Include="Migrations\201710180458387_Inbox.Designer.cs">
+      <DependentUpon>201710180458387_Inbox.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -876,6 +888,16 @@
     <Content Include="Views\Emails\_ViewStart.cshtml" />
     <Content Include="Views\Emails\Web.config" />
     <Content Include="Views\SendEmails\SendEmail.cshtml" />
+    <Content Include="Views\Messages\Create.cshtml" />
+    <Content Include="Views\Messages\Delete.cshtml" />
+    <Content Include="Views\Messages\Details.cshtml" />
+    <Content Include="Views\Messages\Edit.cshtml" />
+    <Content Include="Views\Messages\Index.cshtml" />
+    <Content Include="Views\Inboxes\Create.cshtml" />
+    <Content Include="Views\Inboxes\Delete.cshtml" />
+    <Content Include="Views\Inboxes\Details.cshtml" />
+    <Content Include="Views\Inboxes\Edit.cshtml" />
+    <Content Include="Views\Inboxes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -932,6 +954,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710172250254_added password field to email table.resx">
       <DependentUpon>201710172250254_added password field to email table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710180141151_messages.resx">
+      <DependentUpon>201710180141151_messages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710180458387_Inbox.resx">
+      <DependentUpon>201710180458387_Inbox.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

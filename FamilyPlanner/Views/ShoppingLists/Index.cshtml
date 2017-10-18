@@ -20,6 +20,7 @@
             @Html.AntiForgeryToken()
 
             <div>
+                @Html.LabelFor(model => model.Item)
                 @Html.EditorFor(model => model.Item, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Item, "", new { @class = "text-danger" })
             </div>
