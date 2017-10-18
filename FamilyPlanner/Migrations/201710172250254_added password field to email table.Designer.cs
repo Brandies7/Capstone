@@ -7,13 +7,13 @@ namespace FamilyPlanner.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class addedpasswordstoemailtable : IMigrationMetadata
+    public sealed partial class addedpasswordfieldtoemailtable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addedpasswordstoemailtable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addedpasswordfieldtoemailtable));
         
         string IMigrationMetadata.Id
         {
-            get { return "201710171835144_added password to email table"; }
+            get { return "201710172250254_added password field to email table"; }
         }
         
         string IMigrationMetadata.Source

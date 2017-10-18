@@ -9,11 +9,12 @@ namespace FamilyPlanner.Models
     public class SendEmail
     {
         public int Id { get; set; }
-        [Display(Name = "From Email"),Required]
+        [Display(Name = "Gmail UserName"),Required]
         
         public string From { get; set; }
 
-        
+        [Display(Name = "Gmail Password"), Required]
+        public string Password { get; set; }
         [Display(Name = "To Email"),Required]
         public string To { get; set; }
         [Display(Name = "Message"),Required]

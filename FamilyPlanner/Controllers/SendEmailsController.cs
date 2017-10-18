@@ -40,32 +40,33 @@ namespace FamilyPlanner.Controllers
         public ActionResult SendEmail(FamilyPlanner.Models.SendEmail model)
         {
             
-            try
-            {
-                //Configuring webMail class to send emails  
-                //gmail smtp server  
-                WebMail.SmtpServer = "smtp.gmail.com";
-                //gmail port to send emails  
-                WebMail.SmtpPort = 587;
-                WebMail.SmtpUseDefaultCredentials = true;
-                //sending emails with secure protocol  
-                WebMail.EnableSsl = true;
-                //EmailId used to send emails from application  
-                WebMail.UserName = "adanb82@gmail.com";
-                WebMail.Password = "Crazyseven7";
+            //try
+            //{
+                
+                    MailMessage Msg = new MailMessage();
+                    // Sender e-mail address.
+                    Msg.From = new MailAddress(model.From);
+                    // Recipient e-mail address.
+                    Msg.To.Add(model.To);
+                    Msg.Subject = model.Text;
+                    Msg.Body = model.Text;
+                    // your remote SMTP server IP.
+                    SmtpClient smtp = new SmtpClient();
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.Credentials = new System.Net.NetworkCredential(model.From, model.Password);
+                    smtp.EnableSsl = true;
+                    
+                    
+            
+            smtp.Send(Msg);
+            ViewBag.Status = "Email Sent Successfully.";
+            //}
+            //catch (Exception)
+            //{
+            //    ViewBag.Status = "Problem while sending email, Please check details.";
 
-                //Sender email address.  
-                WebMail.From = model.From;
-
-                //Send email  
-                WebMail.Send(to: model.To, subject: model.Text, body: model.Text, from: model.From, cc: model.Text, isBodyHtml: true);
-                ViewBag.Status = "Email Sent Successfully.";
-            }
-            catch (Exception)
-            {
-                ViewBag.Status = "Problem while sending email, Please check details.";
-
-            }
+            //}
             return View();
         }
     

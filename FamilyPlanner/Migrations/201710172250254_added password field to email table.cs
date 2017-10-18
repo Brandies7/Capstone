@@ -3,7 +3,7 @@ namespace FamilyPlanner.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class addedpasswordstoemailtable : DbMigration
+    public partial class addedpasswordfieldtoemailtable : DbMigration
     {
         public override void Up()
         {

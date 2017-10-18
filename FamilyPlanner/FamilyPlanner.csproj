@@ -368,6 +368,10 @@
     <Compile Include="Migrations\201710171908212_removed password from email table.Designer.cs">
       <DependentUpon>201710171908212_removed password from email table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710172250254_added password field to email table.cs" />
+    <Compile Include="Migrations\201710172250254_added password field to email table.Designer.cs">
+      <DependentUpon>201710172250254_added password field to email table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Child.cs" />
@@ -925,6 +929,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710171908212_removed password from email table.resx">
       <DependentUpon>201710171908212_removed password from email table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710172250254_added password field to email table.resx">
+      <DependentUpon>201710172250254_added password field to email table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
