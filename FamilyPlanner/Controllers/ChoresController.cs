@@ -38,7 +38,12 @@ namespace FamilyPlanner.Controllers
                     completeCount++;
                 }
             }
+            
             ViewBag.Percent = Math.Round(100f * ((float)completeCount / (float)myChores.Count()));
+            if(completeCount <= 0)
+            {
+                 ViewBag.Percent = 0;
+            }
             
             return myChores;
             //return db.Chores.ToList().Where(x => x.User == currentUser);
@@ -74,7 +79,7 @@ namespace FamilyPlanner.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Chore,IsDone,PointValue")] Chores chores)
+        public ActionResult Create([Bind(Include = "Id,Chore,IsDone,AssignedTo,PointValue")] Chores chores)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +93,7 @@ namespace FamilyPlanner.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AJAXCreate([Bind(Include = "Id,Chore,IsDone,PointValue")] Chores chores)
+        public ActionResult AJAXCreate([Bind(Include = "Id,Chore,IsDone,AssignedTo,PointValue")] Chores chores)
         {
             if (ModelState.IsValid)
             {

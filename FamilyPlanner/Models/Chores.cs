@@ -11,6 +11,7 @@ namespace FamilyPlanner.Models
 
         public string Chore { get; set; }
         public bool IsDone { get; set; }
+        public string AssignedTo { get; set; }
         public int PointValue { get; set; }
         public virtual ApplicationUser User { get; set; }
 

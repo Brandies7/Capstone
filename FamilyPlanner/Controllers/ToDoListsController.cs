@@ -40,6 +40,10 @@ namespace FamilyPlanner.Controllers
                
             }
             ViewBag.Percent = Math.Round(100f * ((float)completeCount / (float) myToDoes.Count()));
+            if(completeCount <= 0)
+            {
+                ViewBag.Percent = 0;
+            }
             return myToDoes;
             //return db.ToDo.ToList().Where(x => x.User == currentUser);
         }

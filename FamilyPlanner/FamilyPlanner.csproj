@@ -384,6 +384,10 @@
     <Compile Include="Migrations\201710180458387_Inbox.Designer.cs">
       <DependentUpon>201710180458387_Inbox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710180529072_added assignedto to chores table.cs" />
+    <Compile Include="Migrations\201710180529072_added assignedto to chores table.Designer.cs">
+      <DependentUpon>201710180529072_added assignedto to chores table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Child.cs" />
@@ -960,6 +964,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710180458387_Inbox.resx">
       <DependentUpon>201710180458387_Inbox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710180529072_added assignedto to chores table.resx">
+      <DependentUpon>201710180529072_added assignedto to chores table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
