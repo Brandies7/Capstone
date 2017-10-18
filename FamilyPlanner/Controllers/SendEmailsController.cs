@@ -1,18 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using FamilyPlanner.Models;
-using RestSharp;
-using RestSharp.Authenticators;
-using System.Threading.Tasks;
 using System.Net.Mail;
-using Postal;
-using System.Web.Helpers;
 
 namespace FamilyPlanner.Controllers
 {
@@ -23,9 +15,6 @@ namespace FamilyPlanner.Controllers
         //GET: SendEmails
         public ActionResult Index(FamilyPlanner.Models.SendEmail model)
         {
-
-            
-
             return View(db.SendEmail.ToList());
         }
 
@@ -39,34 +28,27 @@ namespace FamilyPlanner.Controllers
         [HttpPost]
         public ActionResult SendEmail(FamilyPlanner.Models.SendEmail model)
         {
-            
-            //try
-            //{
-                
-                    MailMessage Msg = new MailMessage();
-                    // Sender e-mail address.
-                    Msg.From = new MailAddress(model.From);
-                    // Recipient e-mail address.
-                    Msg.To.Add(model.To);
-                    Msg.Subject = model.Text;
-                    Msg.Body = model.Text;
-                    // your remote SMTP server IP.
-                    SmtpClient smtp = new SmtpClient();
-                    smtp.Host = "smtp.gmail.com";
-                    smtp.Port = 587;
-                    smtp.Credentials = new System.Net.NetworkCredential(model.From, model.Password);
-                    smtp.EnableSsl = true;
+            try
+            {
+                MailMessage Msg = new MailMessage();
+                Msg.From = new MailAddress(model.From);
+                Msg.To.Add(model.To);
+                Msg.Subject = model.Text;
+                Msg.Body = model.Text;
                     
-                    
-            
-            smtp.Send(Msg);
-            ViewBag.Status = "Email Sent Successfully.";
-            //}
-            //catch (Exception)
-            //{
-            //    ViewBag.Status = "Problem while sending email, Please check details.";
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.Credentials = new System.Net.NetworkCredential(model.From, model.Password);
+                smtp.EnableSsl = true;
+                smtp.Send(Msg);
+                ViewBag.Status = "Email Sent Successfully.";
+            }
+            catch (Exception)
+            {
+               ViewBag.Status = "Problem while sending email, Please check details.";
 
-            //}
+            }
             return View();
         }
     

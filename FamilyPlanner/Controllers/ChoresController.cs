@@ -23,6 +23,7 @@ namespace FamilyPlanner.Controllers
 
         private IEnumerable<Chores> Chores()
         {
+            
             string currentUserId = User.Identity.GetUserId();
             ApplicationUser currentUser = db.Users.FirstOrDefault
                 (x => x.Id == currentUserId);
@@ -38,6 +39,7 @@ namespace FamilyPlanner.Controllers
                 }
             }
             ViewBag.Percent = Math.Round(100f * ((float)completeCount / (float)myChores.Count()));
+            
             return myChores;
             //return db.Chores.ToList().Where(x => x.User == currentUser);
         }
